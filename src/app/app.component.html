@@ -1,0 +1,24 @@
+<app-header (onSearch)="onSearch($event)"></app-header>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-2">
+        <app-profile [user]="user"></app-profile>
+      </div>
+      <div class="col-md-4">
+          <app-post (onSubmit)="onSubmit_click($event)"></app-post>
+
+          <div *ngIf="cards.length == 0">
+              <p class="is_center">Não há posts</p>
+          </div>
+
+          <div *ngFor="let card of cards | filter: 'content' : searchValue">
+              <app-card [card]="card" (onDeleteCard)="onDelete_click($event)"></app-card>
+          </div>
+      </div>
+      <div class="col-md-4">
+    
+      </div>
+  </div>
+</div>

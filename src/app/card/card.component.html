@@ -1,0 +1,32 @@
+<div class="card card-item" >
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image">
+          <i class="fa fa-user fa-3x fa-border user-card"></i>
+        </figure>
+      </div>
+      <div class="media-content" style="overflow: hidden;">
+        <p class="title is-4">{{card.user.name}}</p>
+        <p class="subtitle is-6">{{card.user.tag}}</p>
+      </div>
+      <div class="media-right">
+        <a class="black" (click)="onDelete(card)">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="ativate_edit">
+      <div class="col-md-12">
+        <app-post [content_value]="card.content" (onSubmit)="onEdit_click($event)"></app-post>
+      </div>
+    </div>
+
+    <div (click)="onSelected()" class="content" *ngIf="!ativate_edit">
+        {{card.content}}
+      <br>
+      <time>{{card.date | date: 'HH:mm dd MMM yyyy'}}</time>
+    </div>
+  </div>
+</div>

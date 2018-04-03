@@ -1,0 +1,12 @@
+<div class="form-group">
+  <form [formGroup]="postForm">
+    <textarea formControlName="description" [class.has-error]="description.invalid" class="form-control form-post" rows="3" #content></textarea>
+  </form>
+</div>
+<div class="form-inline" style="position: relative;">
+    <p> Caracteres: {{content.value.length}}</p>
+    <button [disabled]="!postForm.valid" class="btn btn-success btn-envio" (click)="enviar_post(content.value)" >Post</button>
+</div>
+<div *ngIf="description.invalid && description.dirty">
+  <p class="has-error">O post deve ter no mínimo 140 caracteres</p>
+</div>
